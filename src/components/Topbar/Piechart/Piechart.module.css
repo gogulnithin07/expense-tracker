@@ -1,0 +1,34 @@
+.piechartContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.legendContainer {
+  padding: 0px 10px;
+  height: 20% !important;
+  width: 80% !important;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.legendContainer div {
+  width: auto;
+}
+.legendColorBox {
+  width: 20px;
+  height: 10px;
+  display: inline-block;
+}
+.legendContent {
+  display: inline-block;
+  margin-left: 5px;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16.34px;
+  text-align: left;
+  letter-spacing: 1px;
+}

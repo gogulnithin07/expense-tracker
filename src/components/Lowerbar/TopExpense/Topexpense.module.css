@@ -1,0 +1,29 @@
+.containerexpense {
+  height: 80%;
+  width: 35%;
+  margin-right: 35px;
+}
+.containerexpense h2 {
+  width: 261px;
+  height: 32px;
+  top: 399px;
+  left: 32px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Ubuntu;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 32.17px;
+  text-align: left;
+  color: rgba(255, 255, 255, 1);
+}
+.expenses {
+  border-radius: 15px;
+  margin-top: 20px;
+  height: 90%;
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 1);
+}

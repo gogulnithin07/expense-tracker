@@ -1,0 +1,32 @@
+.balanceBtn {
+  border-radius: 15px;
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18.38px;
+  border: none;
+  width: 50%;
+  min-height: 20%;
+  text-align: center;
+  cursor: pointer;
+  text-transform: capitalize;
+  margin-top: 18px;
+  padding: 12px 30px;
+  background: linear-gradient(90deg, #b5dc52 0%, #89e148 100%);
+}
+.expenseBtn {
+  border-radius: 15px;
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18.38px;
+  border: none;
+  width: 50%;
+  min-height: 20%;
+  text-align: center;
+  cursor: pointer;
+  text-transform: capitalize;
+  margin-top: 18px;
+  padding: 12px 30px;
+  background: linear-gradient(90deg, #ff9595 0%, #ff4747 80%, #ff3838 100%);
+}
