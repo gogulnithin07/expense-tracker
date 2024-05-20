@@ -1,25 +1,29 @@
 import { Topbar } from "./components/Topbar/Topbar";
 import { Lowerbar } from "./components/Lowerbar/Lowerbar";
 import { useEffect, useState } from "react";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import { SnackbarProvider } from "notistack";
 function App() {
   const [balance, setBalance] = useState(0);
   const [expense, setExpense] = useState(0);
   const [expenseList, setExpenseList] = useState([]);
-  const [isMounted, setIsMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [categorySpends, setCategorySpends] = useState({
     food: 0,
     entertainment: 0,
     travel: 0,
   });
-  // storing in local
   useEffect(() => {
-    // check local
-    const localBalance = localStorage.getItem("balance");
-    console.log(localBalance, "get1");
-    if (localBalance) {
-      setBalance(Number(localBalance));
-      console.log("no change", localBalance, balance);
+    console.log("bal changed by use effect", balance);
+    if (mounted) {
+      localStorage.setItem("balance", balance);
+    }
+  }, [balance, mounted]);
+  useEffect(() => {
+    const localBal = localStorage.getItem("balance");
+    console.log(localBal, "get1");
+    if (localBal) {
+      setBalance(Number(localBal));
+      console.log("no change", localBal, balance);
     } else {
       setBalance(5000);
       localStorage.setItem("balance", 5000);
@@ -27,12 +31,12 @@ function App() {
     }
     const items = JSON.parse(localStorage.getItem("expenses"));
     setExpenseList(items || []);
-    setIsMounted(true);
+    setMounted(true);
   }, []);
   // for passing values in state
   useEffect(() => {
     // storing initial value
-    if (expenseList.length > 0 || isMounted) {
+    if (expenseList.length > 0 || mounted) {
       localStorage.setItem("expenses", JSON.stringify(expenseList));
       const total = expenseList.slice().reduce((acc, val) => {
         return acc + val.price;
@@ -61,14 +65,8 @@ function App() {
       entertainment: entertainmentSpends,
       travel: travelSpends,
     });
-  }, [expenseList, isMounted]);
-  // saving balance in local
-  useEffect(() => {
-    console.log("bal changed by use effect", balance);
-    if (isMounted) {
-      localStorage.setItem("balance", balance);
-    }
-  }, [balance, isMounted]);
+  }, [expenseList, mounted]);
+
   return (
     <SnackbarProvider>
       <div className="App">
