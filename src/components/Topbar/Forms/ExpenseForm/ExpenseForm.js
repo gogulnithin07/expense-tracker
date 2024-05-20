@@ -73,7 +73,7 @@ const ExpenseForm = ({
         {/* content */}
         <div className={styles.formEl}>
           <h3 className={styles.one}>Add Expenses</h3>
-          <form onSubmit={handleSubmit}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <div>
               <input
                 type="text"
@@ -123,7 +123,7 @@ const ExpenseForm = ({
                 backgroundColor: "rgb(227, 227, 227 )",
                 color: "background: rgba(0, 0, 0, 1)",
               }}
-              className={styles.btn}
+              className={`${styles.btn} ${styles.btnCancel}`}
               type="click"
               onClick={handleCloseModal}>
               Close Modal

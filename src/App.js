@@ -1,13 +1,12 @@
 import { Topbar } from "./components/Topbar/Topbar";
 import { Lowerbar } from "./components/Lowerbar/Lowerbar";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 function App() {
   const [balance, setBalance] = useState(0);
   const [expense, setExpense] = useState(0);
   const [expenseList, setExpenseList] = useState([]);
-  // piestart
-  // 3rd state
+  const [isMounted, setIsMounted] = useState(false);
   const [categorySpends, setCategorySpends] = useState({
     food: 0,
     entertainment: 0,
@@ -18,9 +17,9 @@ function App() {
     // check local
     const localBalance = localStorage.getItem("balance");
     console.log(localBalance, "get1");
-    if (Number(localBalance) && Number(localBalance) !== 0) {
+    if (localBalance) {
       setBalance(Number(localBalance));
-      console.log("no change");
+      console.log("no change", localBalance, balance);
     } else {
       setBalance(5000);
       localStorage.setItem("balance", 5000);
@@ -28,11 +27,12 @@ function App() {
     }
     const items = JSON.parse(localStorage.getItem("expenses"));
     setExpenseList(items || []);
+    setIsMounted(true);
   }, []);
   // for passing values in state
   useEffect(() => {
     // storing initial value
-    if (expenseList.length > 0) {
+    if (expenseList.length > 0 || isMounted) {
       localStorage.setItem("expenses", JSON.stringify(expenseList));
       const total = expenseList.slice().reduce((acc, val) => {
         return acc + val.price;
@@ -61,11 +61,14 @@ function App() {
       entertainment: entertainmentSpends,
       travel: travelSpends,
     });
-  }, [expenseList, expense]);
+  }, [expenseList, isMounted]);
   // saving balance in local
   useEffect(() => {
-    localStorage.setItem("balance", balance);
-  }, [balance]);
+    console.log("bal changed by use effect", balance);
+    if (isMounted) {
+      localStorage.setItem("balance", balance);
+    }
+  }, [balance, isMounted]);
   return (
     <SnackbarProvider>
       <div className="App">

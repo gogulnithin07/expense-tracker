@@ -32,3 +32,14 @@
   text-align: left;
   letter-spacing: 1px;
 }
+@media (max-width: 767px) {
+  .piechartContainer {
+    width: 90%;
+    height: 350px !important;
+  }
+  .legendContainer {
+    width: 90% !important;
+    height: auto;
+    flex-wrap: nowrap;
+  }
+}

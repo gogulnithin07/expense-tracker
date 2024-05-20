@@ -1,8 +1,8 @@
-form {
+.balanceForm {
   width: 500px;
   height: 150px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important;
 }
 .one {
   width: 178px;
@@ -57,4 +57,36 @@ form {
   color: linear-gradient(0deg, #d9d9d9, #d9d9d9),
     linear-gradient(0deg, #d9d9d9, #d9d9d9),
     linear-gradient(0deg, #fbfbfb, #fbfbfb);
+}
+@media (max-width: 767px) {
+  .balanceForm {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+  .two {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .two input {
+    width: 80%;
+  }
+  .two button {
+    width: 80%;
+    min-height: 50px;
+    height: 100px !important;
+    text-align: center;
+  }
+  .one {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .btnCancel {
+    width: 150px !important;
+    align-self: self-start;
+    margin-left: 50px;
+  }
 }

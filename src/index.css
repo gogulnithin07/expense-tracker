@@ -52,7 +52,7 @@ h6 {
   height: 100%;
   background-color: rgba(59, 59, 59, 1);
   text-transform: capitalize;
-  padding: 20px 12px;
+  padding: 20px 20px;
 }
 
 .mainHeading {
@@ -64,4 +64,9 @@ h6 {
   line-height: 36.77px;
   text-align: left;
   padding: 5px;
+}
+@media (max-width: 767px) {
+  .mainHeading {
+    text-align: center;
+  }
 }

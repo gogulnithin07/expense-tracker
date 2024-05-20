@@ -4,8 +4,6 @@ import { useState } from "react";
 import { PiPizzaThin } from "react-icons/pi";
 import { BsSuitcase2 } from "react-icons/bs";
 import { GoGift } from "react-icons/go";
-
-import { MdOutlineCancel } from "react-icons/md";
 import { FaPenClip } from "react-icons/fa6";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { FaArrowLeftLong } from "react-icons/fa6";
@@ -47,7 +45,7 @@ function RecentTransaction({
                 setExpenseList={setExpenseList}
               />
             ))}
-            {expenseList.length > 3 && (
+            {true && (
               <div className={styles.pagination}>
                 <button
                   onClick={(e) => {
@@ -89,7 +87,6 @@ function CreateExpenseElement({
   const handleOpenModal = () => {
     setShowModal(true);
   };
-
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -244,50 +241,90 @@ const EditForm = ({
   }
   // close
   console.log(obj);
+  // modal style
+  const customStyles = {
+    content: {
+      width: "95%",
+      maxWidth: "572px",
+      top: "50%",
+      left: "50%",
+      transform: "translateX(-50%) translateY(-50%)",
+      height: "fit-content",
+      maxHeight: "90vh",
+      background: "rgba(239, 239, 239, 0.85)",
+      border: "0",
+      borderRadius: "15px",
+      padding: "2rem",
+    },
+  };
+
   return (
-    <ReactModal isOpen={showModal} contentLabel="Minimal Modal Example">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-          <input
-            value={price}
-            type="number"
-            onChange={(e) => setPrice(+e.target.value)}
-            placeholder="Price"
-          />
+    <div>
+      <ReactModal
+        style={customStyles}
+        isOpen={showModal}
+        onRequestClose={handleCloseModal}
+        shouldCloseOnOverlayClick={true}>
+        <div className={styles.formEl}>
+          <h3 className={styles.one}>Edit Expenses</h3>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <input
+                type="text"
+                placeholder="Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+              <input
+                value={price}
+                type="number"
+                onChange={(e) => setPrice(+e.target.value)}
+                placeholder="Price"
+              />
+            </div>
+            <div>
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                required>
+                <option value="" disabled>
+                  Select category
+                </option>
+                <option value="food">Food</option>
+                <option value="travel">Travel</option>
+                <option value="entertainment">Entertainment</option>
+              </select>
+              <input
+                type="date"
+                required
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </div>
+            <button
+              style={{
+                backgroundColor: "rgba(244, 187, 74, 1)",
+                color: "rgba(255, 255, 255, 1)",
+              }}
+              className={styles.btn}
+              type="submit">
+              Add expense
+            </button>
+            <button
+              style={{
+                backgroundColor: "rgb(227, 227, 227 )",
+                color: "background: rgba(0, 0, 0, 1)",
+              }}
+              className={styles.btn}
+              type="click"
+              onClick={handleCloseModal}>
+              Close Modal
+            </button>
+          </form>
         </div>
-        <div>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            required>
-            <option value="" disabled>
-              Select category
-            </option>
-            <option value="food">Food</option>
-            <option value="travel">Travel</option>
-            <option value="entertainment">Entertainment</option>
-          </select>
-          <input
-            type="date"
-            required
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </div>
-        <button type="submit">Add expense</button>
-        <button type="click" onClick={handleCloseModal}>
-          Close Modal
-        </button>
-      </form>
-      <button onClick={handleCloseModal}>Close Modal</button>
-    </ReactModal>
+      </ReactModal>
+    </div>
   );
 };
 

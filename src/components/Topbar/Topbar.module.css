@@ -1,5 +1,4 @@
 .containerTopbar {
-  height: 40%;
   height: 300px;
   margin-bottom: 35px;
   display: flex;
@@ -17,4 +16,17 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   background-color: rgba(155, 155, 155, 1);
+}
+@media (max-width: 767px) {
+  .containerTopbar {
+    height: auto;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .containerTopbar div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+    height: 180px;
+  }
 }

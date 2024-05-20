@@ -27,3 +27,13 @@
   border: 1px solid white;
   background-color: rgba(255, 255, 255, 1);
 }
+@media (max-width: 767px) {
+  .containerexpense {
+    width: 100%;
+    margin-right: 0;
+  }
+  .containerexpense h2 {
+    text-align: center;
+    width: 100%;
+  }
+}

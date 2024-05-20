@@ -6,3 +6,12 @@
   justify-content: space-around;
   align-items: start;
 }
+@media (max-width: 767px) {
+  .lowerbar {
+    gap: 10px;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

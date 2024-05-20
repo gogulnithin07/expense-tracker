@@ -25,7 +25,9 @@ const BalanceForm = ({ showModal, handleCloseModal, handleAddBalance }) => {
         contentLabel="onRequestClose Example"
         onRequestClose={handleCloseModal}
         shouldCloseOnOverlayClick={true}>
-        <form onSubmit={(e) => handleAddBalance(e)}>
+        <form
+          className={styles.balanceForm}
+          onSubmit={(e) => handleAddBalance(e)}>
           <h3 className={styles.one}>Add balance</h3>
           <div className={styles.two}>
             <input
@@ -42,6 +44,7 @@ const BalanceForm = ({ showModal, handleCloseModal, handleAddBalance }) => {
               add balance
             </button>
             <button
+              className={styles.btnCancel}
               style={{ backgroundColor: "#E3E3E3", color: "black" }}
               onClick={handleCloseModal}>
               cancel
